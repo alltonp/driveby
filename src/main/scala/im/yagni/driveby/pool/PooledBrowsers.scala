@@ -1,7 +1,6 @@
 package im.yagni.driveby.pool
 
 import im.yagni.driveby.browser.Browser
-import im.yagni.driveby.specs2.{NakedExample}
 import im.yagni.driveby.{ExampleAware, BrowserAware, DriveBy, Example}
 
 trait PooledBrowsers extends ExampleAware with BrowserAware {
