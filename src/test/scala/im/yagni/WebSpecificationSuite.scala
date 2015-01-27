@@ -15,14 +15,14 @@ object WebSpecificationSuite {
 
   DriveByConfig.waitTimeout = 2000
 //  DriveByConfig.browserType = BrowserTypes.firefox // wont launch
-  DriveByConfig.browserType = BrowserTypes.phantomjs // launching but not running
-//  DriveByConfig.browserType = BrowserTypes.chrome  // launching and running not passing
+//  DriveByConfig.browserType = BrowserTypes.phantomjs // launching but not running
+  DriveByConfig.browserType = BrowserTypes.chrome  // launching and running not passing
   DriveByConfig.browserInstances = instancesForParallel
 
     //Noise on
 //  DriveByConfig.reportAlways = true
 //  DriveByConfig.trackingFullDump = true
-  DriveByConfig.trackingVerbose = true
+//  DriveByConfig.trackingVerbose = true
 
 //  DriveByConfig.flyHostname = Some("localhost")
 

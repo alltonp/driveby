@@ -192,7 +192,7 @@ class ConditionsSpec extends WebSpecification {
   "ElementDisabled" should {
     "pass for id when disabled" in rawBrowser {
       (given: BrowserDriver) => {
-        val id = Id("ElementDisabled")
+        val id = Id("ElementDisabledWhenDisabled")
         given.page(<form><input disabled="disabled" id={id.id}/></form>)
           .assert(ElementDisabled(id))
        }
@@ -200,7 +200,7 @@ class ConditionsSpec extends WebSpecification {
 
     "fail for id not disabled" in rawBrowser {
       (given: BrowserDriver) => {
-        val id = Id("ElementNotDisabled")
+        val id = Id("ElementNotDisabledWhenNotDisabled")
         given.page(<form><input id={id.id}/></form>)
           .assert(ElementDisabled(id)) must throwA(new ConditionNotMetException(
           """> FAILED: Assert ElementDisabled("Id(ElementNotDisabled)") but was "true"  (not met within 2000 millis)"""))
@@ -211,7 +211,7 @@ class ConditionsSpec extends WebSpecification {
   "ElementEnabled" should {
     "pass for id when enabled" in rawBrowser {
       (given: BrowserDriver) => {
-        val id = Id("ElementEnabled")
+        val id = Id("ElementEnabledWhenEnabled")
         given.page(<form><input id={id.id}/></form>)
           .assert(ElementEnabled(id))
        }
@@ -219,7 +219,7 @@ class ConditionsSpec extends WebSpecification {
 
     "fail for id not enabled" in rawBrowser {
       (given: BrowserDriver) => {
-        val id = Id("ElementNotEnabled")
+        val id = Id("ElementEnabledWhenNotEnabled")
         given.page(<form><input disabled="disabled" id={id.id}/></form>)
           .assert(ElementEnabled(id)) must throwA(new ConditionNotMetException(
           """> FAILED: Assert ElementEnabled("Id(ElementNotEnabled)") but was "false"  (not met within 2000 millis)"""))
