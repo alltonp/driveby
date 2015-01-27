@@ -27,34 +27,6 @@ class ConditionsSpec extends WebSpecification {
   //      .assert(CurrentUrlContains("foo"))
   //  }
 
-  "ElementClassesEquals" should {
-    "pass for id" in rawBrowser {
-      (given: BrowserDriver) => {
-        val id = Id("hasClassWith")
-        given.page(<b id={id.id} class="wobbleClass hasClass wibbleClass">hasClassWith</b>)
-          .assert(ElementClassesEquals(id, Set("hasClass", "wibbleClass", "wobbleClass")))
-      }
-    }
-
-    "fail for id with missing" in rawBrowser {
-      (given: BrowserDriver) => {
-        val id = Id("hasClassWithMissing")
-        given.page(<b id={id.id} class="nothasClass">hasClassWithMissing</b>)
-          .assert(ElementClassesEquals(id, Set("hasClass"))) must throwA(new ConditionNotMetException(
-          """> FAILED: Assert ElementClassesEqual("Id(hasClassWithMissing)", "hasClass") but was "nothasClass"  (not met within 2000 millis)"""))
-      }
-    }
-
-    "fail for id with extra" in rawBrowser {
-      (given: BrowserDriver) => {
-        val id = Id("hasClassWithExtra")
-        given.page(<b id={id.id} class="hasClass extraClass">hasClassWithExtra</b>)
-          .assert(ElementClassesEquals(id, Set("hasClass"))) must throwA(new ConditionNotMetException(
-          """> FAILED: Assert ElementClassesEqual("Id(hasClassWithExtra)", "hasClass") but was "hasClass extraClass"  (not met within 2000 millis)"""))
-      }
-    }
-  }
-
   //TODO: have a spec ...
 //  "SelectOptionsEquals" should {
 //    "pass happy path" in rawBrowser {
