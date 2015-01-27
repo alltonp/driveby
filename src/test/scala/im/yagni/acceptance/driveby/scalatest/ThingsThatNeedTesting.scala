@@ -1,6 +1,6 @@
-package im.yagni.acceptance.driveby.specs2
+package im.yagni.acceptance.driveby.scalatest
 
-class ConditionsSpec extends WebSpecification {
+object ThingsThatNeedTesting {
   //TODO: test missing conditions
   //TODO: test all sad paths
   //TODO: test probing (via delays somehow)
@@ -23,14 +23,13 @@ class ConditionsSpec extends WebSpecification {
   //  }
 
   //TODO: have a spec ...
-//  "SelectOptionsEquals" should {
-//    "pass happy path" in rawBrowser {
-//      (given: BrowserDriver) => {
-//        val id = Id("TextEmpty")
-//        given.page(<b id={id.id}></b>)
-//          .assert(TextEmpty(id))
-//      }
-//    }
-//  }
-
+  //  "SelectOptionsEquals" should {
+  //    "pass happy path" in rawBrowser {
+  //      (given: BrowserDriver) => {
+  //        val id = Id("TextEmpty")
+  //        given.page(<b id={id.id}></b>)
+  //          .assert(TextEmpty(id))
+  //      }
+  //    }
+  //  }
 }
