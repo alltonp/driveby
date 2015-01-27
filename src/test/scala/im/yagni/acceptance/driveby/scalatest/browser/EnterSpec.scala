@@ -1,8 +1,9 @@
-package im.yagni.acceptance.driveby.scalatest
+package im.yagni.acceptance.driveby.scalatest.browser
 
-import im.yagni.driveby.conditions._
-import im.yagni.driveby.Id
+import im.yagni.acceptance.driveby.scalatest.WebSpecification
 import im.yagni.common.ConditionNotMetException
+import im.yagni.driveby.Id
+import im.yagni.driveby.conditions._
 import org.scalatest.Matchers
 
 class EnterSpec extends WebSpecification with Matchers {

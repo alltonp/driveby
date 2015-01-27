@@ -1,8 +1,7 @@
-package im.yagni.acceptance.driveby.scalatest
+package im.yagni.acceptance.driveby.scalatest.browser
 
+import im.yagni.acceptance.driveby.scalatest.WebSpecification
 import im.yagni.driveby.conditions._
-import im.yagni.driveby.Id
-import im.yagni.common.ConditionNotMetException
 import org.scalatest.Matchers
 
 class TitleSpec extends WebSpecification with Matchers {

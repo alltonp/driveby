@@ -1,5 +1,6 @@
-package im.yagni.acceptance.driveby.scalatest
+package im.yagni.acceptance.driveby.scalatest.browser
 
+import im.yagni.acceptance.driveby.scalatest.WebSpecification
 import org.scalatest.Matchers
 
 class HtmlSpec extends WebSpecification with Matchers {

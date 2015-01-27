@@ -1,5 +1,6 @@
-package im.yagni.acceptance.driveby.scalatest
+package im.yagni.acceptance.driveby.scalatest.browser
 
+import im.yagni.acceptance.driveby.scalatest.WebSpecification
 import im.yagni.driveby.Id
 import im.yagni.driveby.conditions.ValueEquals
 import org.scalatest.Matchers
