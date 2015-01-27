@@ -1,6 +1,7 @@
 package im.yagni
 
 import im.yagni.common.WebServerForServlets
+import im.yagni.driveby.pool.{Application, ApplicationController}
 import im.yagni.driveby.{BrowserTypes, DriveBy, DriveByConfig}
 
 object WebSpecificationSuite {
@@ -21,7 +22,7 @@ object WebSpecificationSuite {
     //Noise on
 //  DriveByConfig.reportAlways = true
 //  DriveByConfig.trackingFullDump = true
-//  DriveByConfig.trackingVerbose = true
+  DriveByConfig.trackingVerbose = true
 
 //  DriveByConfig.flyHostname = Some("localhost")
 
@@ -34,6 +35,22 @@ object WebSpecificationSuite {
 
 //  DriveByConfig.applicationControllers = 1.to((instancesForParallel) - 1)
 //    .map(n ⇒ InProcessApplicationController("Application " + BasePort + n, BasePort + n)).toList
+
+  // Application's are not starting .. that seems to be the a problem ....
+
+  val foo = new ApplicationController {
+    val application = Application("App", PORT, java.net.InetAddress.getLocalHost.getHostName)
+
+    beforeStart()
+    val s = server
+
+    def beforeStart() {}
+    def start() { server.start() }
+    def hasStarted = true
+    def stop() { }
+  }
+
+    DriveByConfig.applicationControllers = List(foo)
 
   DriveBy.start()
 }
