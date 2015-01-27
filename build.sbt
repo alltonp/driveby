@@ -1,21 +1,21 @@
 import scala.util.Try
 
-
 name := "driveby"
 
 organization := "im.mange"
 
 version := Try(sys.env("TRAVIS_BUILD_NUMBER")).map("0.3." + _).getOrElse("1.0-SNAPSHOT")
 
-scalaVersion:= "2.10.4"
+scalaVersion:= "2.11.4"
 
 resolvers ++= Seq(
-  "Sonatype OSS Releases" at "http://oss.sonatype.org/content/repositories/releases/"
+  "Sonatype OSS Releases" at "http://oss.sonatype.org/content/repositories/releases/",
+  "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 )
 
-val flyScalaVersion = "2.1.5" // not 2.11
+val flyScalaVersion = "2.1.6-SNAPSHOT" // not 2.11
 val jettyVersion = "8.1.14.v20131031"
-val nscalaTimeVersion = "0.2.0" //1.6.0
+val nscalaTimeVersion = "1.6.0"
 val scalaTestVersion = "2.1.3"
 val seleniumVersion = "2.44.0"
 val phantomjsDriverVersion = "1.1.0"
@@ -30,6 +30,7 @@ libraryDependencies ++= Seq(
   "org.seleniumhq.selenium" % "selenium-firefox-driver" % seleniumVersion,
   "org.seleniumhq.selenium" % "selenium-ie-driver" % seleniumVersion,
   "org.seleniumhq.selenium" % "selenium-chrome-driver" % seleniumVersion,
+  "org.scala-lang.modules" %% "scala-xml" % "1.0.1",
   "com.flyobjectspace" %% "flyscala" % flyScalaVersion, /*withSources()*/
   "org.pegdown" % "pegdown" % "1.0.2" % "test",
   "junit" % "junit" % "4.9"// % "test"
