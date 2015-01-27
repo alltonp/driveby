@@ -29,6 +29,7 @@ libraryDependencies ++= Seq(
   //"com.github.detro" % "phantomjsdriver" % "1.2.0" exclude("org.seleniumhq.selenium", "selenium-server"),
   "org.specs2" %% "specs2" % specs2Version,
   "org.scalatest" % "scalatest_2.10" % scalaTestVersion,
+  "org.seleniumhq.selenium" % "selenium-remote-driver" % "2.43.1",
   "org.seleniumhq.selenium" % "selenium-firefox-driver" % seleniumVersion,
   "org.seleniumhq.selenium" % "selenium-ie-driver" % seleniumVersion,
   "org.seleniumhq.selenium" % "selenium-chrome-driver" % seleniumVersion,
