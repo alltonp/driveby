@@ -1,9 +1,9 @@
 package im.yagni.acceptance.driveby.specs2
 
-import im.yagni.driveby.conditions._
-import im.yagni.common.ConditionNotMetException
-import im.yagni.driveby.{Id, Class}
 import im.yagni.acceptance.driveby.driver.BrowserDriver
+import im.yagni.common.ConditionNotMetException
+import im.yagni.driveby.Id
+import im.yagni.driveby.conditions._
 
 class ConditionsSpec extends WebSpecification {
   //TODO: test missing conditions
@@ -26,65 +26,6 @@ class ConditionsSpec extends WebSpecification {
   //    given.page(<html/>)
   //      .assert(CurrentUrlContains("foo"))
   //  }
-
-  "ElementCountEquals" should {
-    "count by class" in rawBrowser {
-      (given: BrowserDriver) => {
-        val clazz = Class("thing")
-        given.page(<b class={clazz.className}>thing1</b> <b class={clazz.className}>thing2</b> <b class={clazz.className}>thing3</b>)
-          .assert(ElementCountEquals(clazz, 3))
-      }
-    }
-  }
-
-  "TextContains" should {
-    "work for id" in rawBrowser {
-      (given: BrowserDriver) => {
-        val id = Id("contains")
-        given.page(<b id={id.id}>foocontainsbar</b>)
-          .assert(TextContains(id, "contains"))
-      }
-    }
-  }
-
-  "ElementVisible" should {
-    "work for id" in rawBrowser {
-      (given: BrowserDriver) => {
-        val id = Id("visible")
-        given.page(<b id={id.id} style="display:block">visible</b>)
-          .assert(ElementVisible(id))
-      }
-    }
-  }
-
-  "ElementHidden" should {
-    "work for id" in rawBrowser {
-      (given: BrowserDriver) => {
-        val id = Id("hidden")
-        given.page(<b id={id.id} style="display:none">hidden</b>)
-          .assert(ElementHidden(id))
-      }
-    }
-  }
-
-  "ElementClassesContains" should {
-    "pass for id" in rawBrowser {
-      (given: BrowserDriver) => {
-        val id = Id("hasClassWith")
-        given.page(<b id={id.id} class="wobbleClass hasClass wibbleClass">hasClassWith</b>)
-          .assert(ElementClassesContains(id, "hasClass"))
-      }
-    }
-
-    "fail for id without" in rawBrowser {
-      (given: BrowserDriver) => {
-        val id = Id("hasClassWithout")
-        given.page(<b id={id.id} class="nothasClass">hasClassWithout</b>)
-          .assert(ElementClassesContains(id, "hasClass")) must throwA(new ConditionNotMetException(
-          """> FAILED: Assert ElementClassesContains("Id(hasClassWithout)", "hasClass") but was "nothasClass"  (not met within 2000 millis)"""))
-      }
-    }
-  }
 
   "ElementClassesEquals" should {
     "pass for id" in rawBrowser {
