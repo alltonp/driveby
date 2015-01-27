@@ -1,10 +1,5 @@
 package im.yagni.acceptance.driveby.specs2
 
-import im.yagni.acceptance.driveby.driver.BrowserDriver
-import im.yagni.common.ConditionNotMetException
-import im.yagni.driveby.Id
-import im.yagni.driveby.conditions._
-
 class ConditionsSpec extends WebSpecification {
   //TODO: test missing conditions
   //TODO: test all sad paths
@@ -37,41 +32,5 @@ class ConditionsSpec extends WebSpecification {
 //      }
 //    }
 //  }
-
-  "TextEmpty" should {
-    "pass for id" in rawBrowser {
-      (given: BrowserDriver) => {
-        val id = Id("TextEmpty")
-        given.page(<b id={id.id}></b>)
-          .assert(TextEmpty(id))
-      }
-    }
-
-    "pass for id with children" in rawBrowser {
-      (given: BrowserDriver) => {
-        val id = Id("TextEmptyWithChild")
-        given.page(<b id={id.id}><div></div></b>)
-          .assert(TextEmpty(id))
-      }
-    }
-
-    "fail for id with text" in rawBrowser {
-      (given: BrowserDriver) => {
-        val id = Id("TextEmptyWithText")
-        given.page(<b id={id.id}>text</b>)
-          .assert(TextEmpty(id)) must throwA(new ConditionNotMetException(
-          """> FAILED: Assert TextEmpty("Id(TextEmptyWithText)", "true") but was "text"  (not met within 2000 millis)"""))
-      }
-    }
-
-    "fail for id with children with text" in rawBrowser {
-      (given: BrowserDriver) => {
-        val id = Id("TextEmptyWithChildWithText")
-        given.page(<b id={id.id}><div>childtext</div></b>)
-          .assert(TextEmpty(id)) must throwA(new ConditionNotMetException(
-          """> FAILED: Assert TextEmpty("Id(TextEmptyWithChildWithText)", "true") but was "childtext"  (not met within 2000 millis)"""))
-      }
-    }
-  }
 
 }
