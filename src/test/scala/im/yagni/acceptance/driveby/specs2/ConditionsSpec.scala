@@ -74,32 +74,4 @@ class ConditionsSpec extends WebSpecification {
     }
   }
 
-  "ElementEmpty" should {
-    "pass for id when no children and no text" in rawBrowser {
-      (given: BrowserDriver) => {
-        val id = Id("ElementEmpty")
-        given.page(<b id={id.id}></b>)
-          .assert(ElementEmpty(id))
-       }
-    }
-
-    "fail for id with children" in rawBrowser {
-      (given: BrowserDriver) => {
-        val id = Id("ElementEmptyWithChild")
-        given.page(<b id={id.id}><div></div></b>)
-          .assert(ElementEmpty(id)) must throwA(new ConditionNotMetException(
-          """> FAILED: Assert ElementEmpty("Id(ElementEmptyWithChild)", "true") but was "Element has 1 children and "" text"  (not met within 2000 millis)"""))
-      }
-    }
-
-    "fail for id with text" in rawBrowser {
-      (given: BrowserDriver) => {
-        val id = Id("ElementEmptyWithText")
-        given.page(<b id={id.id}>textInElement</b>)
-          .assert(ElementEmpty(id)) must throwA(new ConditionNotMetException(
-          """> FAILED: Assert ElementEmpty("Id(ElementEmptyWithText)", "true") but was "Element has 0 children and "textInElement" text"  (not met within 2000 millis)"""))
-      }
-    }
-  }
-
 }
