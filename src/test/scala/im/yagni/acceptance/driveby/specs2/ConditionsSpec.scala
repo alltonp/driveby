@@ -203,7 +203,7 @@ class ConditionsSpec extends WebSpecification {
         val id = Id("ElementNotDisabledWhenNotDisabled")
         given.page(<form><input id={id.id}/></form>)
           .assert(ElementDisabled(id)) must throwA(new ConditionNotMetException(
-          """> FAILED: Assert ElementDisabled("Id(ElementNotDisabled)") but was "true"  (not met within 2000 millis)"""))
+          """> FAILED: Assert ElementDisabled("Id(ElementNotDisabledWhenNotDisabled)") but was "true"  (not met within 2000 millis)"""))
       }
     }
   }
@@ -222,7 +222,7 @@ class ConditionsSpec extends WebSpecification {
         val id = Id("ElementEnabledWhenNotEnabled")
         given.page(<form><input disabled="disabled" id={id.id}/></form>)
           .assert(ElementEnabled(id)) must throwA(new ConditionNotMetException(
-          """> FAILED: Assert ElementEnabled("Id(ElementNotEnabled)") but was "false"  (not met within 2000 millis)"""))
+          """> FAILED: Assert ElementEnabled("Id(ElementEnabledWhenNotEnabled)") but was "false"  (not met within 2000 millis)"""))
       }
     }
   }

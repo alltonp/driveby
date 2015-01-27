@@ -27,7 +27,7 @@ object WebSpecificationSuite {
 //  DriveByConfig.flyHostname = Some("localhost")
 
   val PORT = basePort + 1
-  val server = new WebServerForServlets(PORT)
+  val server = new WebServerForServlets(PORT, autoStart = false)
 
 //  println(DriveBy.ping)
 
@@ -49,8 +49,7 @@ object WebSpecificationSuite {
     def hasStarted = true
     def stop() { }
   }
-
-    DriveByConfig.applicationControllers = List(foo)
+  DriveByConfig.applicationControllers = List(foo)
 
   DriveBy.start()
 }
