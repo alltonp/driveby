@@ -13,9 +13,27 @@ resolvers ++= Seq(
   "Sonatype OSS Releases" at "http://oss.sonatype.org/content/repositories/releases/"
 )
 
+val flyScalaVersion = "2.1.5"
+val jettyVersion = "8.1.14.v20131031"
+//  val nscalaTimeVersion = "0.4.2"
+val nscalaTimeVersion = "0.2.0"
+val scalaTestVersion = "2.1.3"
+val seleniumVersion = "2.44.0"
+val specs2Version = "1.14"
+val phantomjsDriverVersion = "1.1.0"
+
 libraryDependencies ++= Seq(
-//	"junit" % "junit" % "4.11" % "test->default",
-//	"org.scalatest" %% "scalatest" % "2.2.0" % "test"
+  "org.eclipse.jetty" % "jetty-webapp" % jettyVersion,
+  "com.github.nscala-time" %% "nscala-time" % nscalaTimeVersion,
+  "com.github.detro.ghostdriver" % "phantomjsdriver" % phantomjsDriverVersion exclude("org.seleniumhq.selenium", "selenium-server"),
+  "org.specs2" %% "specs2" % specs2Version,
+  "org.scalatest" % "scalatest_2.10" % scalaTestVersion,
+  "org.seleniumhq.selenium" % "selenium-firefox-driver" % seleniumVersion,
+  "org.seleniumhq.selenium" % "selenium-ie-driver" % seleniumVersion,
+  "org.seleniumhq.selenium" % "selenium-chrome-driver" % seleniumVersion,
+  "com.flyobjectspace" %% "flyscala" % flyScalaVersion, /*withSources()*/
+  "org.pegdown" % "pegdown" % "1.0.2" % "test",
+  "junit" % "junit" % "4.9"// % "test"
 )
 
 sonatypeSettings
