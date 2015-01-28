@@ -6,14 +6,14 @@ organization := "im.mange"
 
 version := Try(sys.env("TRAVIS_BUILD_NUMBER")).map("0.3." + _).getOrElse("1.0-SNAPSHOT")
 
-scalaVersion:= "2.11.4"
+scalaVersion:= "2.11.5"
 
 resolvers ++= Seq(
-  "Sonatype OSS Releases" at "http://oss.sonatype.org/content/repositories/releases/",
-  "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+  "Sonatype OSS Releases" at "http://oss.sonatype.org/content/repositories/releases/"//,
+//  "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 )
 
-val flyScalaVersion = "2.1.6-SNAPSHOT" // not 2.11
+val flyScalaVersion = "2.1.6" // not 2.11
 //use littler server instead
 val jettyVersion = "8.1.14.v20131031"
 val nscalaTimeVersion = "1.6.0"
