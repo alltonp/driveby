@@ -4,10 +4,12 @@ import collection.mutable.ListBuffer
 import im.yagni.driveby.browser.{InternalBrowser, Browser}
 import im.yagni.common.Times
 import im.yagni.driveby.{BrowserType, DriveByConfig, Example, BrowserFactory}
-import scala.concurrent.ops._
+import scala.concurrent.ExecutionContext.Implicits.global
 import DriveByConfig._
 import actors.threadpool.{TimeUnit, LinkedBlockingQueue}
 import im.yagni.driveby.tracking._
+
+import scala.concurrent.Future
 
 class LocalBrowserPool extends BrowserPool {
   import Times._
@@ -50,7 +52,7 @@ class LocalBrowserPool extends BrowserPool {
   }
 
   def fill() {
-    spawn {
+    Future {
       //TODO: add BrowserControllers to the println
       println("### Warming up browsers ... " + browserType)
       add(browserType, browserInstances)

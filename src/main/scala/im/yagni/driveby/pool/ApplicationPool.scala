@@ -1,18 +1,19 @@
 package im.yagni.driveby.pool
 
-import collection.mutable.ListBuffer
 import im.yagni.common.Wait._
-import actors.threadpool.{TimeUnit, LinkedBlockingQueue}
-import im.yagni.driveby.{DriveByConfig, Example}
-import im.yagni.driveby.browser.InternalBrowser
 import im.yagni.driveby.tracking._
+import im.yagni.driveby.{DriveByConfig, Example}
+
+import scala.actors.threadpool.{LinkedBlockingQueue, TimeUnit}
+import scala.collection.mutable.ListBuffer
+import scala.concurrent.Future
 
 //TODO: remove disgrace
 //TODO: support tracking properly, not Info
 object ApplicationPool {
   //TODO: should make browsers work the same, so can mix and match
   private val applicationControllers = DriveByConfig.applicationControllers
-  import scala.concurrent.ops._
+  import scala.concurrent.ExecutionContext.Implicits.global
 
   private val allApplications = new ListBuffer[Application]
   private val availableApplications = new LinkedBlockingQueue[Application]
@@ -50,7 +51,7 @@ object ApplicationPool {
 
     try {
       applicationControllers.map(a =>
-        spawn {
+        Future {
           try {
             println("### Starting " + a.application)
             Tracker.add(ApplicationStartRequested(a.application.name, a.application.port))

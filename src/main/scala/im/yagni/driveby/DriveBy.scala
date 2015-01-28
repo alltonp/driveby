@@ -4,7 +4,8 @@ import report.Reporter
 import im.yagni.common.OnShutdown
 import pool.{BrowserPool, LocalBrowserPool, ApplicationPool}
 import tracking.Tracker
-import scala.concurrent.ops._
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
 import im.yagni.flyby.RemoteBrowserPool
 
 //TODO: please make me non-static
@@ -28,8 +29,8 @@ object DriveBy {
 
     OnShutdown.execute("Generate tracking report", Tracker.report _)
 
-    spawn(ApplicationPool.fill())
-    spawn(DriveBy.browserPool.fill())
+    Future(ApplicationPool.fill())
+    Future(DriveBy.browserPool.fill())
   }
 
   def stop() {

@@ -14,6 +14,7 @@ resolvers ++= Seq(
 )
 
 val flyScalaVersion = "2.1.6-SNAPSHOT" // not 2.11
+//use littler server instead
 val jettyVersion = "8.1.14.v20131031"
 val nscalaTimeVersion = "1.6.0"
 val scalaTestVersion = "2.1.3"

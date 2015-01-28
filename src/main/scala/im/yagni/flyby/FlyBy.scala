@@ -1,12 +1,12 @@
 package im.yagni.flyby
 
-import im.yagni.driveby.{BrowserFactory, BrowserType}
-import im.yagni.driveby.browser.ProbingBrowser
-import im.yagni.common.{ConditionNotMetException, OnShutdown, Host}
-import org.joda.time.DateTime
+import im.yagni.common.Host
+import im.yagni.driveby.BrowserType
+
+import scala.concurrent.Future
 
 object FlyBy {
-  import scala.concurrent.ops._
+  import scala.concurrent.ExecutionContext.Implicits.global
 
   def start() = {
     FlyServer
@@ -17,7 +17,7 @@ object FlyBy {
   //TODO: this looks a little off now
   def addBrowser(space: FlySpace, browserType: BrowserType) = {
     val agent = BrowserAgent(space, browserType)
-    spawn { agent.start() }
+    Future { agent.start() }
     agent
   }
 }
