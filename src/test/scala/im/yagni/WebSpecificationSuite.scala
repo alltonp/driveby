@@ -1,6 +1,6 @@
 package im.yagni
 
-import im.yagni.common.WebServerForServlets
+import im.mange.little.LittleServletServer
 import im.yagni.driveby.pool.{Application, ApplicationController}
 import im.yagni.driveby.{BrowserTypes, DriveBy, DriveByConfig}
 
@@ -27,7 +27,7 @@ object WebSpecificationSuite {
 //  DriveByConfig.flyHostname = Some("localhost")
 
   val PORT = basePort + 1
-  val server = new WebServerForServlets(PORT, autoStart = false)
+  val server = new LittleServletServer(PORT, autoStart = false)
 
 //  println(DriveBy.ping)
 

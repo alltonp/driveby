@@ -13,18 +13,16 @@ resolvers ++= Seq(
 )
 
 val flyScalaVersion = "2.1.6"
-//use littler server instead
-val jettyVersion = "8.1.14.v20131031"
 val nscalaTimeVersion = "1.6.0"
 val scalaTestVersion = "2.2.1"
 val seleniumVersion = "2.44.0"
 val phantomjsDriverVersion = "1.1.0"
 
 libraryDependencies ++= Seq(
-  "org.eclipse.jetty" % "jetty-webapp" % jettyVersion,
   "com.github.nscala-time" %% "nscala-time" % nscalaTimeVersion,
   "com.github.detro.ghostdriver" % "phantomjsdriver" % phantomjsDriverVersion exclude("org.seleniumhq.selenium", "selenium-server"),
   //"com.github.detro" % "phantomjsdriver" % "1.2.0" exclude("org.seleniumhq.selenium", "selenium-server"),
+  "im.mange" %% "little-server" % "0.0.4",
   "org.scalatest" % "scalatest_2.11" % scalaTestVersion,
   "org.seleniumhq.selenium" % "selenium-remote-driver" % "2.43.1",
   "org.seleniumhq.selenium" % "selenium-firefox-driver" % seleniumVersion,
