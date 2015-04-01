@@ -30,8 +30,8 @@ libraryDependencies ++= Seq(
   "org.seleniumhq.selenium" % "selenium-chrome-driver" % seleniumVersion,
   "org.scala-lang.modules" %% "scala-xml" % "1.0.1",
   "com.flyobjectspace" %% "flyscala" % flyScalaVersion, /*withSources()*/
-  "org.pegdown" % "pegdown" % "1.0.2" % "test",
-  "junit" % "junit" % "4.9"// % "test"
+  "org.pegdown" % "pegdown" % "1.0.2" % "test"
+//  "junit" % "junit" % "4.9"// % "test"
 )
 
 sonatypeSettings
