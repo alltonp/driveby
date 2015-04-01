@@ -13,7 +13,7 @@ resolvers ++= Seq(
 )
 
 val flyScalaVersion = "2.1.6"
-val nscalaTimeVersion = "1.6.0"
+val nscalaTimeVersion = "1.8.0"
 val scalaTestVersion = "2.2.1"
 val seleniumVersion = "2.44.0"
 val phantomjsDriverVersion = "1.1.0"
