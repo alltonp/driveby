@@ -22,7 +22,7 @@ libraryDependencies ++= Seq(
   "com.github.nscala-time" %% "nscala-time" % nscalaTimeVersion,
   "com.github.detro.ghostdriver" % "phantomjsdriver" % phantomjsDriverVersion exclude("org.seleniumhq.selenium", "selenium-server"),
   //"com.github.detro" % "phantomjsdriver" % "1.2.0" exclude("org.seleniumhq.selenium", "selenium-server"),
-  "im.mange" %% "little-server" % "0.0.6",
+  "im.mange" %% "little-server" % "0.0.7" % "test",
   "org.scalatest" % "scalatest_2.11" % scalaTestVersion,
   "org.seleniumhq.selenium" % "selenium-remote-driver" % "2.43.1",
   "org.seleniumhq.selenium" % "selenium-firefox-driver" % seleniumVersion,
