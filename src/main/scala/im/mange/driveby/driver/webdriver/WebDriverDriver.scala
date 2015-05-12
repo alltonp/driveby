@@ -13,7 +13,7 @@ case class WebDriverDriver(webDriver: WebDriver) extends NakedDriver {
   def currentUrl = webDriver.getCurrentUrl
   def html = webDriver.getPageSource
   def close() { webDriver.quit() }
-  def findElements(by: By) = webDriver.findElements(convertBy(by)).map(WebDriverElement(_))
+  def findElements(by: By) = webDriver.findElements(convertBy(by)).map(WebDriverElement(_, webDriver))
   def refresh() { webDriver.get(webDriver.getCurrentUrl) }
   def maximise() { if (!webDriver.isInstanceOf[ChromeDriver]) webDriver.manage().window().maximize() } //TODO: yuk
 

@@ -7,6 +7,7 @@ trait NakedElement {
   def enter(value: String)
   def isDisplayed: Boolean
   def isEnabled: Boolean
+  def hasFocus: Boolean
   def childrenCount: Int
   //TODO: sort out this shonky mess
   def option(value: String): Option[NakedElement]

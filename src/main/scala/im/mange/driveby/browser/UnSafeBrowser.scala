@@ -12,6 +12,7 @@ class UnSafeBrowser private[driveby] (driver: NakedDriver) {
   def attribute(by: By, attribute: String) = findUniqueElement(by).attribute(attribute)
   def isDisplayed(by: By) = findUniqueElement(by).isDisplayed
   def isEnabled(by: By) = findUniqueElement(by).isEnabled
+  def hasFocus(by: By) = findUniqueElement(by).hasFocus
 
   def exists(by: By) = {
     try {
