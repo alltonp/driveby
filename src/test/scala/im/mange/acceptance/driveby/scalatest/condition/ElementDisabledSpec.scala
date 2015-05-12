@@ -9,13 +9,13 @@ import org.scalatest.Matchers
 class ElementDisabledSpec extends WebSpecification with Matchers {
   def `pass for id when disabled` {
     val id = Id("ElementDisabledWhenDisabled")
-    given.page(<form><input disabled="disabled" id={id.id}/></form>)
+    given.page(<body><form><input disabled="disabled" id={id.id}/></form></body>)
       .assert(ElementDisabled(id))
   }
 
   def `fail for id not enabled` {
     val id = Id("ElementNotDisabledWhenNotDisabled")
-    val b = given.page(<form><input id={id.id}/></form>)
+    val b = given.page(<body><form><input id={id.id}/></form></body>)
 
     val thrown = the [ConditionNotMetException] thrownBy { b.assert(ElementDisabled(id)) }
     thrown.getMessage should equal("""> FAILED: Assert ElementDisabled("Id(ElementNotDisabledWhenNotDisabled)") but was "true"  (not met within 2000 millis)""")
