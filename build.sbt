@@ -19,9 +19,11 @@ val seleniumVersion = "2.45.0"
 val phantomjsDriverVersion = "1.2.1"
 
 libraryDependencies ++= Seq(
+  "commons-io"     %  "commons-io"   % "2.4"    % "test",  // for FileUtils
+  "org.scala-lang" %  "scala-actors" % "2.11.5" % "test",  // for LinkedBlockingQueue
   "com.github.nscala-time" %% "nscala-time" % nscalaTimeVersion,
-//  "com.github.detro" % "phantomjsdriver" % phantomjsDriverVersion
   //TODO: temporary workaround: https://github.com/detro/ghostdriver/issues/397
+  //  "com.github.detro" % "phantomjsdriver" % phantomjsDriverVersion
   "com.codeborne" % "phantomjsdriver" % phantomjsDriverVersion
     exclude("org.seleniumhq.selenium", "selenium-server")
     exclude("org.seleniumhq.selenium", "selenium-safari-driver")
@@ -32,23 +34,12 @@ libraryDependencies ++= Seq(
     exclude("org.seleniumhq.selenium", "selenium-api")
     exclude("org.seleniumhq.selenium", "selenium-remote-driver")
   ,
-  //"com.github.detro" % "phantomjsdriver" % "1.2.0" exclude("org.seleniumhq.selenium", "selenium-server"),
-  "im.mange" %% "little-server" % "0.0.7" % "test",
-  "org.scalatest" % "scalatest_2.11" % scalaTestVersion % "provided",
-//  "org.seleniumhq.selenium" % "selenium-remote-driver" % "2.45.0"
-
-//    exclude("cglib", "cglib-nodep")                        // selenium-remote-driver
-//    exclude("commons-codec", "commons-codec")              // selenium-remote-driver
-//    exclude("net.java.dev.jna", "jna")                     // selenium-remote-driver
-//    exclude("net.java.dev.jna", "platform")                // selenium-remote-driver
-//    exclude("org.scalatest", "scalatest_2.11"),
   "org.seleniumhq.selenium" % "selenium-firefox-driver" % seleniumVersion,
   "org.seleniumhq.selenium" % "selenium-ie-driver" % seleniumVersion,
   "org.seleniumhq.selenium" % "selenium-chrome-driver" % seleniumVersion,
-//  "org.scala-lang.modules" %% "scala-xml" % "1.0.3" % "test",
+  "im.mange" %% "little-server" % "0.0.7" % "test",
+  "org.scalatest" % "scalatest_2.11" % scalaTestVersion % "provided",
   "com.flyobjectspace" %% "flyscala" % flyScalaVersion /*withSources()*/
-//  "org.pegdown" % "pegdown" % "1.0.2" % "test"
-//  "junit" % "junit" % "4.9"// % "test"
 )
 
 net.virtualvoid.sbt.graph.Plugin.graphSettings
