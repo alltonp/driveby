@@ -27,6 +27,8 @@ libraryDependencies ++= Seq(
     exclude("org.seleniumhq.selenium", "selenium-htmlunit-driver")
     exclude("org.seleniumhq.selenium", "selenium-iphone-driver")
     exclude("org.seleniumhq.selenium", "selenium-java")
+    exclude("org.seleniumhq.selenium", "selenium-api")
+    exclude("org.seleniumhq.selenium", "selenium-remote-driver")
   ,
   //"com.github.detro" % "phantomjsdriver" % "1.2.0" exclude("org.seleniumhq.selenium", "selenium-server"),
   "im.mange" %% "little-server" % "0.0.7" % "test",
@@ -41,9 +43,9 @@ libraryDependencies ++= Seq(
   "org.seleniumhq.selenium" % "selenium-firefox-driver" % seleniumVersion,
   "org.seleniumhq.selenium" % "selenium-ie-driver" % seleniumVersion,
   "org.seleniumhq.selenium" % "selenium-chrome-driver" % seleniumVersion,
-  "org.scala-lang.modules" %% "scala-xml" % "1.0.3",
-  "com.flyobjectspace" %% "flyscala" % flyScalaVersion, /*withSources()*/
-  "org.pegdown" % "pegdown" % "1.0.2" % "test"
+//  "org.scala-lang.modules" %% "scala-xml" % "1.0.3" % "test",
+  "com.flyobjectspace" %% "flyscala" % flyScalaVersion /*withSources()*/
+//  "org.pegdown" % "pegdown" % "1.0.2" % "test"
 //  "junit" % "junit" % "4.9"// % "test"
 )
 
