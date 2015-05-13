@@ -15,16 +15,29 @@ resolvers ++= Seq(
 val flyScalaVersion = "2.1.6"
 val nscalaTimeVersion = "1.8.0"
 val scalaTestVersion = "2.2.1"
-val seleniumVersion = "2.44.0"
-val phantomjsDriverVersion = "1.1.0"
+val seleniumVersion = "2.45.0"
+val phantomjsDriverVersion = "1.2.0"
 
 libraryDependencies ++= Seq(
   "com.github.nscala-time" %% "nscala-time" % nscalaTimeVersion,
-  "com.github.detro.ghostdriver" % "phantomjsdriver" % phantomjsDriverVersion exclude("org.seleniumhq.selenium", "selenium-server"),
+  "com.github.detro" % "phantomjsdriver" % phantomjsDriverVersion
+    exclude("org.seleniumhq.selenium", "selenium-server")
+    exclude("org.seleniumhq.selenium", "selenium-safari-driver")
+    exclude("org.seleniumhq.selenium", "selenium-android-driver")
+    exclude("org.seleniumhq.selenium", "selenium-htmlunit-driver")
+    exclude("org.seleniumhq.selenium", "selenium-iphone-driver")
+    exclude("org.seleniumhq.selenium", "selenium-java")
+  ,
   //"com.github.detro" % "phantomjsdriver" % "1.2.0" exclude("org.seleniumhq.selenium", "selenium-server"),
   "im.mange" %% "little-server" % "0.0.7" % "test",
   "org.scalatest" % "scalatest_2.11" % scalaTestVersion,
-  "org.seleniumhq.selenium" % "selenium-remote-driver" % "2.43.1",
+//  "org.seleniumhq.selenium" % "selenium-remote-driver" % "2.45.0"
+
+//    exclude("cglib", "cglib-nodep")                        // selenium-remote-driver
+//    exclude("commons-codec", "commons-codec")              // selenium-remote-driver
+//    exclude("net.java.dev.jna", "jna")                     // selenium-remote-driver
+//    exclude("net.java.dev.jna", "platform")                // selenium-remote-driver
+//    exclude("org.scalatest", "scalatest_2.11"),
   "org.seleniumhq.selenium" % "selenium-firefox-driver" % seleniumVersion,
   "org.seleniumhq.selenium" % "selenium-ie-driver" % seleniumVersion,
   "org.seleniumhq.selenium" % "selenium-chrome-driver" % seleniumVersion,
@@ -33,6 +46,8 @@ libraryDependencies ++= Seq(
   "org.pegdown" % "pegdown" % "1.0.2" % "test"
 //  "junit" % "junit" % "4.9"// % "test"
 )
+
+net.virtualvoid.sbt.graph.Plugin.graphSettings
 
 sonatypeSettings
 
