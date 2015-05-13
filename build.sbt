@@ -16,11 +16,13 @@ val flyScalaVersion = "2.1.6"
 val nscalaTimeVersion = "1.8.0"
 val scalaTestVersion = "[2.2.1,2.3.0]"
 val seleniumVersion = "2.45.0"
-val phantomjsDriverVersion = "1.2.0"
+val phantomjsDriverVersion = "1.2.1"
 
 libraryDependencies ++= Seq(
   "com.github.nscala-time" %% "nscala-time" % nscalaTimeVersion,
-  "com.github.detro" % "phantomjsdriver" % phantomjsDriverVersion
+//  "com.github.detro" % "phantomjsdriver" % phantomjsDriverVersion
+  //TODO: temporary workaround: https://github.com/detro/ghostdriver/issues/397
+  "com.codeborne" % "phantomjsdriver" % phantomjsDriverVersion
     exclude("org.seleniumhq.selenium", "selenium-server")
     exclude("org.seleniumhq.selenium", "selenium-safari-driver")
     exclude("org.seleniumhq.selenium", "selenium-android-driver")
