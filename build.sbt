@@ -19,8 +19,8 @@ val seleniumVersion = "2.45.0"
 val phantomjsDriverVersion = "1.2.1"
 
 libraryDependencies ++= Seq(
-  "commons-io"     %  "commons-io"   % "2.4"    % "test",  // for FileUtils
-  "org.scala-lang" %  "scala-actors" % "2.11.5" % "test",  // for LinkedBlockingQueue
+  "commons-io"     %  "commons-io"   % "2.4",  // for FileUtils
+  "org.scala-lang" %  "scala-actors" % "2.11.5", // for LinkedBlockingQueue
   "com.github.nscala-time" %% "nscala-time" % nscalaTimeVersion,
   //TODO: temporary workaround: https://github.com/detro/ghostdriver/issues/397
   //  "com.github.detro" % "phantomjsdriver" % phantomjsDriverVersion
