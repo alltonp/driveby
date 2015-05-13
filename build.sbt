@@ -14,7 +14,7 @@ resolvers ++= Seq(
 
 val flyScalaVersion = "2.1.6"
 val nscalaTimeVersion = "1.8.0"
-val scalaTestVersion = "2.2.1"
+val scalaTestVersion = "[2.2.1,2.3.0]"
 val seleniumVersion = "2.45.0"
 val phantomjsDriverVersion = "1.2.0"
 
@@ -30,7 +30,7 @@ libraryDependencies ++= Seq(
   ,
   //"com.github.detro" % "phantomjsdriver" % "1.2.0" exclude("org.seleniumhq.selenium", "selenium-server"),
   "im.mange" %% "little-server" % "0.0.7" % "test",
-  "org.scalatest" % "scalatest_2.11" % scalaTestVersion,
+  "org.scalatest" % "scalatest_2.11" % scalaTestVersion % "provided",
 //  "org.seleniumhq.selenium" % "selenium-remote-driver" % "2.45.0"
 
 //    exclude("cglib", "cglib-nodep")                        // selenium-remote-driver
@@ -41,7 +41,7 @@ libraryDependencies ++= Seq(
   "org.seleniumhq.selenium" % "selenium-firefox-driver" % seleniumVersion,
   "org.seleniumhq.selenium" % "selenium-ie-driver" % seleniumVersion,
   "org.seleniumhq.selenium" % "selenium-chrome-driver" % seleniumVersion,
-  "org.scala-lang.modules" %% "scala-xml" % "1.0.1",
+  "org.scala-lang.modules" %% "scala-xml" % "1.0.3",
   "com.flyobjectspace" %% "flyscala" % flyScalaVersion, /*withSources()*/
   "org.pegdown" % "pegdown" % "1.0.2" % "test"
 //  "junit" % "junit" % "4.9"// % "test"
