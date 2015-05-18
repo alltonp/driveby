@@ -26,18 +26,18 @@ object Reporter {
     val htmlFilename = new File(actualPath + "capture/" + uniqueName + ".html")
     FileUtils.writeStringToFile(htmlFilename, browser.html)
 
-    val content = report(message, screenshotFilename, example, browser.html)
+    val content = report(message, screenshotFilename, example, htmlFilename)
     FileUtils.writeStringToFile(new File(actualPath + uniqueName + ".html"), content.toString())
   }
 
-  private def report(message: String, screenshot: File, example: Example, html: String) =
+  private def report(message: String, screenshot: File, example: Example, html: File) =
     //TODO: include spec name and example desc in report
     <body>
       <h3>{example.description}</h3>
       <p>{fmt.print(new DateTime)}: <b>{message}</b></p><hr/>
       <img src={"screenshot/" + screenshot.getName}/><hr/>
       <p>{scala.xml.Unparsed(renderEvents(example.id))}</p><hr/>
-      <p>{scala.xml.Unparsed(html)}</p>
+      <iframe frameborder="0" src={s"screenshot/${html.getName}"}></iframe>
     </body>
 
   private def renderEvents(exampleId: Long): String = {
