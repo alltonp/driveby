@@ -17,9 +17,12 @@ case class ExampleRun(exampleId: Long, events: Seq[Event]) {
   private val finish = events.find(_.isInstanceOf[ExampleFinished])
   private val start = events.find(_.isInstanceOf[ExampleStarted])
 
+  //TODO: this should be an invariant of the test, with a maximum that we set in config...
   private def assertionCount = browserCommands.count(_.isInstanceOf[Assert])
   private def applicationWaitMillis = for { t <- applicationTaken; r <- applicationRequested } yield t.at - r.at
   private def browserCommands = events.filter(_.isInstanceOf[BrowserCommandExecuted]).map(_.asInstanceOf[BrowserCommandExecuted].command)
+
+  //TODO: this should be an invariant of the test, with a maximum that we set in config...
   private def browserCommandsCount = browserCommands.size
   private def browserWaitMillis = for { t <- browserTaken; r <- browserRequested } yield t.at - r.at
   private def name = if (start.isDefined) start.get.asInstanceOf[ExampleStarted].name else "?"
