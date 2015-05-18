@@ -5,11 +5,11 @@ import im.mange.driveby.tracking._
 case class ApplicationRun(applicationId: Long, events: Seq[Event]) {
   import im.mange.driveby.tracking.Format._
 
-  private def startRequested = events.filter(_.isInstanceOf[ApplicationStartRequested]).headOption
-  private def started = events.filter(_.isInstanceOf[ApplicationStarted]).headOption
+  private def startRequested = events.find(_.isInstanceOf[ApplicationStartRequested])
+  private def started = events.find(_.isInstanceOf[ApplicationStarted])
   private def didStart = started.isDefined
-  private def stopRequested = events.filter(_.isInstanceOf[ApplicationStopRequested]).headOption
-  private def stopped = events.filter(_.isInstanceOf[ApplicationStopped]).headOption
+  private def stopRequested = events.find(_.isInstanceOf[ApplicationStopRequested])
+  private def stopped = events.find(_.isInstanceOf[ApplicationStopped])
   private def didStop = stopped.isDefined
   private def lastExampleFinished = events.filter(_.isInstanceOf[ApplicationWritten]).reverse.headOption
 
@@ -18,7 +18,7 @@ case class ApplicationRun(applicationId: Long, events: Seq[Event]) {
   private def stoppingMillis = for { s <- stopped; r <- stopRequested } yield s.at - r.at
   //TODO: find a less shonky way to do this
   private def name = if (startRequested.isDefined) startRequested.get.asInstanceOf[ApplicationStartRequested].applicationType else "???"
-  private def exampleCount = events.filter(_.isInstanceOf[ApplicationTaken]).size
+  private def exampleCount = events.count(_.isInstanceOf[ApplicationTaken])
 
   //TODO: should be N/A for idle and examples if did not start and stop
   def report = "- " + applicationId +
