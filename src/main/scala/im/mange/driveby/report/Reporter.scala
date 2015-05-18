@@ -35,9 +35,9 @@ object Reporter {
     <body>
       <h3>{example.description}</h3>
       <p>{fmt.print(new DateTime)}: <b>{message}</b></p><hr/>
-      <img src={"screenshot/" + screenshot.getName}/><hr/>
+      <img src={"capture/" + screenshot.getName}/><hr/>
       <p>{scala.xml.Unparsed(renderEvents(example.id))}</p><hr/>
-      <iframe frameborder="0" src={s"screenshot/${html.getName}"}></iframe>
+      <iframe width="100%" height="100%" frameborder="0" src={s"capture/${html.getName}"}></iframe>
     </body>
 
   private def renderEvents(exampleId: Long): String = {

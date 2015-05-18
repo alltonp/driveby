@@ -18,5 +18,4 @@ trait DriveByReporting extends ExampleAware with BrowserAware {
   private def reportAll(example: Example) {
     Reporter.report("", browser, example, specification, failed = false)
   }
-
 }

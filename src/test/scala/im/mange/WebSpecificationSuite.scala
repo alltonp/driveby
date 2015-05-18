@@ -20,7 +20,7 @@ object WebSpecificationSuite {
   DriveByConfig.browserInstances = instancesForParallel
 
     //Noise on
-//  DriveByConfig.reportAlways = true
+  DriveByConfig.reportAlways = true
 //  DriveByConfig.trackingFullDump = true
 //  DriveByConfig.trackingVerbose = true
 
