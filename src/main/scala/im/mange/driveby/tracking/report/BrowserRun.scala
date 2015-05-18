@@ -5,11 +5,11 @@ import im.mange.driveby.tracking.{BrowserCloseRequested, BrowserClosed, BrowserO
 case class BrowserRun(browserId: Long, events: Seq[Event]) {
   import im.mange.driveby.tracking.Format._
 
-  private def openRequested = events.filter(_.isInstanceOf[BrowserOpenRequested]).headOption
-  private def opened = events.filter(_.isInstanceOf[BrowserOpened]).headOption
+  private def openRequested = events.find(_.isInstanceOf[BrowserOpenRequested])
+  private def opened = events.find(_.isInstanceOf[BrowserOpened])
   private def didOpen = opened.isDefined
-  private def closeRequested = events.filter(_.isInstanceOf[BrowserCloseRequested]).headOption
-  private def closed = events.filter(_.isInstanceOf[BrowserClosed]).headOption
+  private def closeRequested = events.find(_.isInstanceOf[BrowserCloseRequested])
+  private def closed = events.find(_.isInstanceOf[BrowserClosed])
   private def didClose = closed.isDefined
   private def lastExampleFinished = events.filter(_.isInstanceOf[BrowserWritten]).reverse.headOption
 
@@ -19,7 +19,7 @@ case class BrowserRun(browserId: Long, events: Seq[Event]) {
 
   //TODO: find a less shonky way to do this
   private def name = if (openRequested.isDefined) openRequested.get.asInstanceOf[BrowserOpenRequested].browserType else "???"
-  private def exampleCount = events.filter(_.isInstanceOf[BrowserTaken]).size
+  private def exampleCount = events.count(_.isInstanceOf[BrowserTaken])
 
   //TODO: should be N/A for idle and examples if did not open and close
   def report = "- " + browserId +
