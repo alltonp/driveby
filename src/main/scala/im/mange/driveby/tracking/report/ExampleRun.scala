@@ -42,6 +42,6 @@ case class ExampleRun(exampleId: Long, events: Seq[Event]) {
     ", total: " + millis(totalMillis) +
     ", commands: " + count(browserCommandsCount) +
     ", asserts: " + count(assertionCount) + ") " +
-    count(exampleId) + ":"
+    count(exampleId) + ": " +
     name
 }

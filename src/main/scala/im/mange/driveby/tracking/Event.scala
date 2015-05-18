@@ -1,7 +1,6 @@
 package im.mange.driveby.tracking
 
 import im.mange.driveby.{BrowserCommand, Example, Specification}
-import scala.Long
 
 trait Event {
   val at = System.currentTimeMillis()
