@@ -8,16 +8,16 @@ case class ExampleRun(exampleId: Long, events: Seq[Event]) {
   import im.mange.driveby.tracking.Format._
 
   //TODO: de-dupe
-  private val applicationRequested = events.filter(_.isInstanceOf[ApplicationTakeRequested]).headOption
-  private val applicationTaken = events.filter(_.isInstanceOf[ApplicationTaken]).headOption
-  private val applicationWritten = events.filter(_.isInstanceOf[ApplicationWritten]).headOption
-  private val browserRequested = events.filter(_.isInstanceOf[BrowserTakeRequested]).headOption
-  private val browserTaken = events.filter(_.isInstanceOf[BrowserTaken]).headOption
-  private val browserWritten = events.filter(_.isInstanceOf[BrowserWritten]).headOption
-  private val finish = events.filter(_.isInstanceOf[ExampleFinished]).headOption
-  private val start = events.filter(_.isInstanceOf[ExampleStarted]).headOption
+  private val applicationRequested = events.find(_.isInstanceOf[ApplicationTakeRequested])
+  private val applicationTaken = events.find(_.isInstanceOf[ApplicationTaken])
+  private val applicationWritten = events.find(_.isInstanceOf[ApplicationWritten])
+  private val browserRequested = events.find(_.isInstanceOf[BrowserTakeRequested])
+  private val browserTaken = events.find(_.isInstanceOf[BrowserTaken])
+  private val browserWritten = events.find(_.isInstanceOf[BrowserWritten])
+  private val finish = events.find(_.isInstanceOf[ExampleFinished])
+  private val start = events.find(_.isInstanceOf[ExampleStarted])
 
-  private def assertionCount = browserCommands.filter(_.isInstanceOf[Assert]).size
+  private def assertionCount = browserCommands.count(_.isInstanceOf[Assert])
   private def applicationWaitMillis = for { t <- applicationTaken; r <- applicationRequested } yield t.at - r.at
   private def browserCommands = events.filter(_.isInstanceOf[BrowserCommandExecuted]).map(_.asInstanceOf[BrowserCommandExecuted].command)
   private def browserCommandsCount = browserCommands.size
