@@ -19,8 +19,13 @@ object Reporter {
   def report(message: String, browser: Browser, example: Example, specification: Specification, failed: Boolean = true) {
     val actualPath = outputDir + (if (failed) "failed/" else "all/")
     val uniqueName = example.id + "_" + specification.name
-    val screenshotFilename = new File(actualPath + "screenshot/" + uniqueName + ".png")
+
+    val screenshotFilename = new File(actualPath + "capture/" + uniqueName + ".png")
     browser.screenshot(screenshotFilename)
+
+    val htmlFilename = new File(actualPath + "capture/" + uniqueName + ".html")
+    FileUtils.writeStringToFile(htmlFilename, browser.html)
+
     val content = report(message, screenshotFilename, example, browser.html)
     FileUtils.writeStringToFile(new File(actualPath + uniqueName + ".html"), content.toString())
   }
