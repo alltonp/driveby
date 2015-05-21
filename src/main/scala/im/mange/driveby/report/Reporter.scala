@@ -12,7 +12,7 @@ import im.mange.driveby.DriveByConfig._
 import org.joda.time.format.DateTimeFormat
 
 object Reporter {
-  val fmt = DateTimeFormat.forPattern("kk:mm:ss:SS");
+  val fmt = DateTimeFormat.forPattern("kk:mm:ss:SS")
 
   def tidyUp() { FileUtils.deleteDirectory(new File(outputDir)) }
 
