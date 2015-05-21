@@ -37,8 +37,9 @@ object Reporter {
       <p>{fmt.print(new DateTime)}: <b>{message}</b></p><hr/>
       <img src={"capture/" + screenshot.getName}/><hr/>
       <p>{scala.xml.Unparsed(renderEvents(example.id))}</p><hr/>
-      <iframe width="100%" height="100%" frameborder="0" src={s"capture/${html.getName}"}></iframe>
     </body>
+
+  //      <iframe width="100%" height="100%" frameborder="0" src={s"capture/${html.getName}"}></iframe>
 
   private def renderEvents(exampleId: Long): String = {
     val interesting = Tracker.allEvents(exampleId).foldLeft(new ListBuffer[String]()) {
