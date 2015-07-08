@@ -47,16 +47,17 @@ object Reporter {
         event match {
           case BrowserCommandExecuted(Html(_), _) =>
           case BrowserCommandExecuted(Screenshot(_), _) =>
-          case e@BrowserCommandExecuted(c, _) => append(accumulator, e, c.toString)
-          case e => append(accumulator, e, e.toString)
+          case e@BrowserCommandExecuted(c, _) => append(accumulator, e, c.toString, "color: green;")
+          case e => append(accumulator, e, e.toString, "color: blue;")
         }
         accumulator
       }
     }
-    interesting.map(e => "<li><b>" + e + "</b></li>").mkString
+    interesting.mkString
   }
 
-  private def append(accumulator: ListBuffer[String], e: Event, m: String) {
-    accumulator.append(fmt.print(e.at) + " - " + m)
+  private def append(accumulator: ListBuffer[String], e: Event, m: String, styles: String) {
+    val line = s"<span style=${"\"" + styles + "\""}>${fmt.print(e.at) + " - " + m}</span>"
+    accumulator.append(line)
   }
 }
