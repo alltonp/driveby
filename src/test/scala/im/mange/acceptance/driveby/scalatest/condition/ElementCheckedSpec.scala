@@ -8,13 +8,13 @@ import org.scalatest.Matchers
 
 class ElementCheckedSpec extends WebSpecification with Matchers {
   def `pass for id when checked - checkbox` {
-    val id = Id("ElementCheckedCheckbox")
+    val id = Id("ElementChecked-Checkbox")
     given.page(<body><form><input type="checkbox" checked="checked" id={id.id}/></form></body>)
       .assert(ElementChecked(id))
   }
 
   def `fail for id not checked - checkbox` {
-    val id = Id("ElementCheckedCheckboxWhenNotChecked")
+    val id = Id("ElementCheckedWhenNotChecked-Checkbox")
     val b = given.page(<body><form><input type="checkbox" id={id.id}/></form></body>)
 
     val thrown = the [ConditionNotMetException] thrownBy { b.assert(ElementChecked(id)) }
