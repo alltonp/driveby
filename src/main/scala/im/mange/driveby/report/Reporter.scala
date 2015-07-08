@@ -34,9 +34,9 @@ object Reporter {
     //TODO: include spec name and example desc in report
     <body>
       <h3>{example.description}</h3>
-      <p>{fmt.print(new DateTime)}: <pre>{message}</pre></p><hr/>
+      <p><pre>{fmt.print(new DateTime)}: {message}</pre></p><hr/>
       <img src={"capture/" + screenshot.getName}/><hr/>
-      <p>{scala.xml.Unparsed(renderEvents(example.id))}</p><hr/>
+      <pre>{scala.xml.Unparsed(renderEvents(example.id))}</pre><hr/>
     </body>
 
   //      <iframe width="100%" height="100%" frameborder="0" src={s"capture/${html.getName}"}></iframe>
