@@ -20,4 +20,18 @@ class ElementCheckedSpec extends WebSpecification with Matchers {
     val thrown = the [ConditionNotMetException] thrownBy { b.assert(ElementChecked(id)) }
     thrown.getMessage should equal("""> FAILED: Assert ElementChecked("Id(ElementCheckedWhenNotCheckedCheckbox)") but was "null"  (not met within 2000 millis)""")
   }
+
+  def `pass for id when checked - radio` {
+    val id = Id("ElementCheckedRadio")
+    given.page(<body><form><input type="radio" checked="checked" id={id.id}/></form></body>)
+      .assert(ElementChecked(id))
+  }
+
+  def `fail for id not checked - radio` {
+    val id = Id("ElementCheckedWhenNotCheckedRadio")
+    val b = given.page(<body><form><input type="radio" id={id.id}/></form></body>)
+
+    val thrown = the [ConditionNotMetException] thrownBy { b.assert(ElementChecked(id)) }
+    thrown.getMessage should equal("""> FAILED: Assert ElementChecked("Id(ElementCheckedWhenNotCheckedRadio)") but was "null"  (not met within 2000 millis)""")
+  }
 }
