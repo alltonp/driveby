@@ -57,7 +57,7 @@ object Reporter {
   }
 
   private def append(accumulator: ListBuffer[String], e: Event, m: String, styles: String) {
-    val line = s"<span style=${"\"" + styles + "\""}>${fmt.print(e.at) + " - " + m}</span>"
+    val line = s"<div style=${"\"" + styles + "\""}>${fmt.print(e.at) + " - " + m}</div>"
     accumulator.append(line)
   }
 }
