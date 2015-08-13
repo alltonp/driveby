@@ -8,7 +8,8 @@ import org.scalatest.Matchers
 
 //TIP: this is a good spec to copy
 class ElementVisibleSpec extends WebSpecification with Matchers {
-  val base = "ElementVisible"
+  private val base = "ElementVisible"
+
   def `work for id` {
     val id = base
     given.page(<b id={id} style="display:block">{id}</b>)
