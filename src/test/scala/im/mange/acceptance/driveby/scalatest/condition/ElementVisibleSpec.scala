@@ -6,6 +6,7 @@ import im.mange.driveby.Id
 import im.mange.driveby.conditions._
 import org.scalatest.Matchers
 
+//TIP: this is a good spec to copy
 class ElementVisibleSpec extends WebSpecification with Matchers {
   def `work for id` {
     val id = "ElementVisible"
@@ -18,7 +19,7 @@ class ElementVisibleSpec extends WebSpecification with Matchers {
     val b = given.page(<b id={id} style="display:none">{id}</b>)
 
     val thrown = the [ConditionNotMetException] thrownBy { b.assert(ElementVisible(Id(id))) }
-    thrown.getMessage should equal("""> FAILED: Assert ElementVisible("Id(ElementVisibleWhenHidden)") but was "hidden"  (not met within 2000 millis)""")
+    thrown.getMessage should equal(s"""> FAILED: Assert ElementVisible("Id($id)") but was "hidden"  (not met within 2000 millis)""")
   }
 
   def `fail for id not exist` {
