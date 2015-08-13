@@ -8,5 +8,5 @@ case class ElementVisible(by: By) extends Condition {
 
   def expectation = expect("ElementVisible", List(by.toString))
   def isSatisfied(browser: UnSafeBrowser) = { browser.isDisplayed(by) == true }
-  def describeFailure(browser: UnSafeBrowser) = { expectation + butWas(() => browser.isDisplayed(by).toString) }
+  def describeFailure(browser: UnSafeBrowser) = { expectation + butWas(() => "hidden") }
 }
