@@ -20,5 +20,4 @@ class ElementHiddenSpec extends WebSpecification with Matchers {
     val thrown = the [ConditionNotMetException] thrownBy { b.assert(ElementHidden(Id(id))) }
     thrown.getMessage should equal("""> FAILED: Assert ElementHidden("Id(ElementHiddenWhenNotHidden)", "true") but was "true"  (not met within 2000 millis)""")
   }
-
 }
