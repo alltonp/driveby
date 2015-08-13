@@ -12,14 +12,14 @@ class ElementHiddenSpec extends WebSpecification with Matchers {
   def `work for id` {
     val id = base
     given.page(<b id={id} style="display:none">{id}</b>)
-      .assert(ElementHidden(Id(id)))
+      .assert(theCondition(id))
   }
 
   def `fail for id not hidden` {
     val id = s"$base-WhenNotHidden"
     val b = given.page(<b id={id} style="">{id}</b>)
 
-    val thrown = the [ConditionNotMetException] thrownBy { b.assert(ElementHidden(Id(id))) }
+    val thrown = the [ConditionNotMetException] thrownBy { b.assert(theCondition(id)) }
     thrown.getMessage should equal(s"""> FAILED: Assert ElementHidden("Id($id)") but was "visible"  (not met within 2000 millis)""")
   }
 
@@ -27,8 +27,9 @@ class ElementHiddenSpec extends WebSpecification with Matchers {
     val id = s"$base-WhenMissing"
     val b = given.page(<b>{id}</b>)
 
-    val thrown = the [ConditionNotMetException] thrownBy { b.assert(ElementHidden(Id(id))) }
+    val thrown = the [ConditionNotMetException] thrownBy { b.assert(theCondition(id)) }
     thrown.getMessage should equal(s"""> FAILED: Assert ElementHidden("Id($id)") but was "does not exist"  (not met within 2000 millis)""")
   }
 
+  private def theCondition(id: String) = ElementHidden(Id(id))
 }
