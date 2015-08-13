@@ -8,14 +8,15 @@ import org.scalatest.Matchers
 
 //TIP: this is a good spec to copy
 class ElementVisibleSpec extends WebSpecification with Matchers {
+  val base = "ElementVisible"
   def `work for id` {
-    val id = "ElementVisible"
+    val id = base
     given.page(<b id={id} style="display:block">{id}</b>)
       .assert(ElementVisible(Id(id)))
   }
 
   def `fail for id not visible` {
-    val id = "ElementVisibleWhenHidden"
+    val id = s"$base-WhenHidden"
     val b = given.page(<b id={id} style="display:none">{id}</b>)
 
     val thrown = the [ConditionNotMetException] thrownBy { b.assert(ElementVisible(Id(id))) }
@@ -23,7 +24,7 @@ class ElementVisibleSpec extends WebSpecification with Matchers {
   }
 
   def `fail for id not exist` {
-    val id = "ElementVisibleWhenMissing"
+    val id = s"$base-WhenMissing"
     val b = given.page(<b>{id}</b>)
 
     val thrown = the [ConditionNotMetException] thrownBy { b.assert(ElementVisible(Id(id))) }
