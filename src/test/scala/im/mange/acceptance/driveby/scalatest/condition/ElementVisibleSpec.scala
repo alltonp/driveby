@@ -18,7 +18,7 @@ class ElementVisibleSpec extends WebSpecification with Matchers {
     val b = given.page(<b id={id} style="display:none">{id}</b>)
 
     val thrown = the [ConditionNotMetException] thrownBy { b.assert(ElementVisible(Id(id))) }
-    thrown.getMessage should equal("""> FAILED: Assert ElementVisible("Id(ElementVisibleWhenHidden)", "true") but was "false"  (not met within 2000 millis)""")
+    thrown.getMessage should equal("""> FAILED: Assert ElementVisible("Id(ElementVisibleWhenHidden)") but was "false"  (not met within 2000 millis)""")
   }
 
 }

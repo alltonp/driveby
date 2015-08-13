@@ -18,6 +18,6 @@ class ElementHiddenSpec extends WebSpecification with Matchers {
     val b = given.page(<b id={id} style="">{id}</b>)
 
     val thrown = the [ConditionNotMetException] thrownBy { b.assert(ElementHidden(Id(id))) }
-    thrown.getMessage should equal("""> FAILED: Assert ElementHidden("Id(ElementHiddenWhenNotHidden)", "true") but was "true"  (not met within 2000 millis)""")
+    thrown.getMessage should equal("""> FAILED: Assert ElementHidden("Id(ElementHiddenWhenNotHidden)") but was "true"  (not met within 2000 millis)""")
   }
 }
