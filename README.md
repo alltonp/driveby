@@ -1,3 +1,6 @@
+# End of Life - use [flakeless](http://github.com/alltonp/flakeless) instead
+
+
 <a href="https://travis-ci.org/alltonp/driveby" target="_blank"><img src="https://travis-ci.org/alltonp/driveby.png?branch=master"></a>
 
 Usage
